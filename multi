@@ -1,0 +1,125 @@
+import os        # Selling this code without my consent will lead to legal action please dm me before using and wait for my permision if you want to make one like this buy a course from me!
+import sys
+from colorama import Fore, Back, Style, init
+
+init(autoreset=True)
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def print_banner():
+    banner = f"""
+{Fore.CYAN}{Back.BLACK}
+ ██ ▄█▀▓█████ ▓█████  ███▄ ▄███▓ ▒█████  
+ ██▄█▒ ▓█   ▀ ▓█   ▀ ▓██▒▀█▀ ██▒▒██▒  ██▒
+▓███▄░ ▒███   ▒███   ▓██    ▓██░▒██░  ██▒
+▓██ █▄ ▒▓█  ▄ ▒▓█  ▄ ▒██    ▒██ ▒██   ██░
+▒██▒ █▄░▒████▒░▒████▒▒██▒   ░██▒░ ████▓▒░
+▒ ▒▒ ▓▒░░ ▒░ ░░░ ▒░ ░░ ▒░   ░  ░░ ▒░▒░▒░ 
+░ ░▒ ▒░ ░ ░  ░ ░ ░  ░░  ░      ░  ░ ▒ ▒░ 
+░ ░░ ░    ░      ░   ░      ░   ░ ░ ░ ▒  
+░  ░      ░  ░   ░  ░       ░       ░ ░  
+                                         
+{Style.RESET_ALL}
+"""
+    print(banner)
+
+def text_tools():
+    print(f"\n{Fore.YELLOW}=== TEXT TOOLS ==={Style.RESET_ALL}")
+    text = input(f"{Fore.GREEN}Enter text: {Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}Length: {len(text)}{Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}Uppercase: {text.upper()}{Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}Lowercase: {text.lower()}{Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}Reversed: {text[::-1]}{Style.RESET_ALL}")
+
+def calculator():
+    print(f"\n{Fore.YELLOW}=== CALCULATOR ==={Style.RESET_ALL}")
+    try:
+        num1 = float(input(f"{Fore.GREEN}First number: {Style.RESET_ALL}"))
+        op = input(f"{Fore.GREEN}Operator (+, -, *, /): {Style.RESET_ALL}")
+        num2 = float(input(f"{Fore.GREEN}Second number: {Style.RESET_ALL}"))
+        
+        result = 0
+        if op == '+': result = num1 + num2
+        elif op == '-': result = num1 - num2
+        elif op == '*': result = num1 * num2
+        elif op == '/': result = num1 / num2 if num2 != 0 else "Error: Division by zero"
+        
+        print(f"{Fore.CYAN}Result: {result}{Style.RESET_ALL}")
+    except ValueError:
+        print(f"{Fore.RED}Invalid input!{Style.RESET_ALL}")
+
+def password_generator():
+    import random
+    import string
+    
+    print(f"\n{Fore.YELLOW}=== PASSWORD GENERATOR ==={Style.RESET_ALL}")
+    length = int(input(f"{Fore.GREEN}Password length: {Style.RESET_ALL}"))
+    chars = string.ascii_letters + string.digits + "!@#$%^&*"
+    password = ''.join(random.choice(chars) for _ in range(length))
+    print(f"{Fore.CYAN}Generated: {password}{Style.RESET_ALL}")
+
+def color_converter():
+    print(f"\n{Fore.YELLOW}=== COLOR CONVERTER ==={Style.RESET_ALL}")
+    hex_color = input(f"{Fore.GREEN}Enter hex color (e.g., #FF5733): {Style.RESET_ALL}")
+    try:
+        hex_color = hex_color.lstrip('#')
+        rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+        print(f"{Fore.CYAN}RGB: {rgb}{Style.RESET_ALL}")
+    except:
+        print(f"{Fore.RED}Invalid hex color!{Style.RESET_ALL}")
+
+def json_formatter():
+    import json
+    print(f"\n{Fore.YELLOW}=== JSON FORMATTER ==={Style.RESET_ALL}")
+    try:
+        json_str = input(f"{Fore.GREEN}Enter JSON: {Style.RESET_ALL}")
+        formatted = json.dumps(json.loads(json_str), indent=2)
+        print(f"{Fore.CYAN}{formatted}{Style.RESET_ALL}")
+    except:
+        print(f"{Fore.RED}Invalid JSON!{Style.RESET_ALL}")
+
+def file_tools():
+    print(f"\n{Fore.YELLOW}=== FILE TOOLS ==={Style.RESET_ALL}")
+    filename = input(f"{Fore.GREEN}Enter filename: {Style.RESET_ALL}")
+    try:
+        with open(filename, 'r') as f:
+            content = f.read()
+        print(f"{Fore.CYAN}Lines: {len(content.splitlines())}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}Characters: {len(content)}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}Words: {len(content.split())}{Style.RESET_ALL}")
+    except FileNotFoundError:
+        print(f"{Fore.RED}File not found!{Style.RESET_ALL}")
+
+def main():
+    while True:
+        clear_screen()
+        print_banner()
+        print(f"{Fore.BLUE}{'─' * 50}{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}1. {Fore.CYAN}Text Tools{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}2. {Fore.CYAN}Calculator{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}3. {Fore.CYAN}Password Generator{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}4. {Fore.CYAN}Color Converter{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}5. {Fore.CYAN}JSON Formatter{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}6. {Fore.CYAN}File Tools{Style.RESET_ALL}")
+        print(f"{Fore.WHITE}7. {Fore.RED}Exit{Style.RESET_ALL}")
+        print(f"{Fore.BLUE}{'─' * 50}{Style.RESET_ALL}")
+        
+        choice = input(f"{Fore.GREEN}Select tool (1-7): {Style.RESET_ALL}")
+        
+        if choice == '1': text_tools()
+        elif choice == '2': calculator()
+        elif choice == '3': password_generator()
+        elif choice == '4': color_converter()
+        elif choice == '5': json_formatter()
+        elif choice == '6': file_tools()
+        elif choice == '7': 
+            print(f"{Fore.MAGENTA}Goodbye!{Style.RESET_ALL}")
+            sys.exit()
+        else:
+            print(f"{Fore.RED}Invalid choice!{Style.RESET_ALL}")
+        
+        input(f"\n{Fore.YELLOW}Press Enter to continue...{Style.RESET_ALL}")
+
+if __name__ == "__main__":
+    main()
